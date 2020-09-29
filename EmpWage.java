@@ -1,4 +1,5 @@
-public class EmployeeWage{
+public class EmpWage
+{
 	
 	public static final int part_time = 1;
 	public static final int full_time = 2;
@@ -6,7 +7,7 @@ public class EmployeeWage{
 	public static final int working_days = 20;
 	public static final int max_hours = 100;
 	
-	public static void main(String[] args) {
+	public static int computeEmpWage() {
 		
 		int hrs = 0;
 		int totalHrs = 0;
@@ -33,5 +34,9 @@ public class EmployeeWage{
 		}
 		int totalWage = totalHrs * wage_per_hour;
 			System.out.println("Total Employee Wage :"+totalWage);
+			return totalWage;
+	}
+	public static void main(String[] args) {
+		computeEmpWage();
 	}
 }
