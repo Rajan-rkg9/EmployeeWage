@@ -3,8 +3,17 @@ public class EmpWage
 	
 	public static final int part_time = 1;
 	public static final int full_time = 2;
+	public  String company ;
+	public  int wage_per_hour,working_days,max_hours;
+	public EmpWage(String company , int wage_per_hour , int working_days , int max_hours)
+	{
+		this.company=company;
+		this.max_hours=max_hours;
+		this.wage_per_hour=wage_per_hour;
+		this.working_days=working_days;
+	}
 	
-	public static int computeEmpWage(String company ,int wage_per_hour, int working_days,int max_hours) {
+	public int computeEmpWage() {
 		
 		int hrs = 0;
 		int totalHrs = 0;
@@ -34,7 +43,9 @@ public class EmpWage
 			return totalWage;
 	}
 	public static void main(String[] args) {
-		computeEmpWage("DMart", 20 , 2 , 10);
-		computeEmpWage("Reliance",10 , 4 , 20);
+		EmpWage obj1 = new EmpWage("DMart" , 20 , 2 , 10);
+		obj1.computeEmpWage();
+		EmpWage obj2 = new EmpWage("RelianceMart" , 10 , 4 , 20);
+		obj2.computeEmpWage();
 	}
 }
