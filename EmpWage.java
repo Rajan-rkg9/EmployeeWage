@@ -1,24 +1,26 @@
+import java.util.*;
 public class EmpWage implements InterfaceEmpWage
 {
 	
 	public static final int part_time = 1;
 	public static final int full_time = 2;
-	public int noOfCompany =0;
 	
-	public CompanyEmpWage wageArray[];
+	
+	public List<CompanyEmpWage> list;
 	
 	public EmpWage()
 	{
-        wageArray = new CompanyEmpWage[5];		
+        list = new ArrayList<>();		
 	}
 	public void addCompanyWage(String company, int wage_per_hour, int working_days, int max_hours) {
-		wageArray[noOfCompany] = new CompanyEmpWage(company, wage_per_hour, working_days, max_hours);
-		noOfCompany++;
+		CompanyEmpWage obj = new CompanyEmpWage( company,  wage_per_hour,  working_days, max_hours);
+		list.add(obj);
 	}
 	public void computeEmpWage() {
-		for(int i = 0; i < noOfCompany; i++) {
-			wageArray[i].setTotalWage(this.computeEmpWage(wageArray[i]));
-			System.out.println(wageArray[i]);
+		for(int i = 0; i < list.size(); i++) {
+			CompanyEmpWage obj = list.get(i);
+			obj.setTotalWage(this.computeEmpWage(obj));
+			System.out.println(obj);
 		}
 	}
 	public int computeEmpWage(CompanyEmpWage obj) {
