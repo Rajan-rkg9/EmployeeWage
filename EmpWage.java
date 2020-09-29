@@ -46,6 +46,7 @@ public class EmpWage implements InterfaceEmpWage
 		}
 			totalHrs = totalHrs + hrs;
 			System.out.println("Day: " + totalDays + " Employee Hours: " + hrs);
+			System.out.println("Daily wage:" + (hrs*obj.wage_per_hour));
 			
 		}
 		int totalWage = totalHrs * obj.wage_per_hour;
