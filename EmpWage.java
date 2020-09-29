@@ -1,4 +1,4 @@
-public class EmpWage
+public class EmpWage implements InterfaceEmpWage
 {
 	
 	public static final int part_time = 1;
