@@ -3,11 +3,8 @@ public class EmpWage
 	
 	public static final int part_time = 1;
 	public static final int full_time = 2;
-	public static final int wage_per_hour = 20;
-	public static final int working_days = 20;
-	public static final int max_hours = 100;
 	
-	public static int computeEmpWage() {
+	public static int computeEmpWage(String company ,int wage_per_hour, int working_days,int max_hours) {
 		
 		int hrs = 0;
 		int totalHrs = 0;
@@ -37,6 +34,7 @@ public class EmpWage
 			return totalWage;
 	}
 	public static void main(String[] args) {
-		computeEmpWage();
+		computeEmpWage("DMart", 20 , 2 , 10);
+		computeEmpWage("Reliance",10 , 4 , 20);
 	}
 }
