@@ -3,23 +3,31 @@ public class EmpWage
 	
 	public static final int part_time = 1;
 	public static final int full_time = 2;
-	public  String company ;
-	public  int wage_per_hour,working_days,max_hours;
-	public EmpWage(String company , int wage_per_hour , int working_days , int max_hours)
-	{
-		this.company=company;
-		this.max_hours=max_hours;
-		this.wage_per_hour=wage_per_hour;
-		this.working_days=working_days;
-	}
+	public int noOfCompany =0;
 	
-	public int computeEmpWage() {
+	public CompanyEmpWage wageArray[];
+	
+	public EmpWage()
+	{
+        wageArray = new CompanyEmpWage[5];		
+	}
+	public void addCompanyWage(String company, int wage_per_hour, int working_days, int max_hours) {
+		wageArray[noOfCompany] = new CompanyEmpWage(company, wage_per_hour, working_days, max_hours);
+		noOfCompany++;
+	}
+	public void computeEmpWage() {
+		for(int i = 0; i < noOfCompany; i++) {
+			wageArray[i].setTotalWage(this.computeEmpWage(wageArray[i]));
+			System.out.println(wageArray[i]);
+		}
+	}
+	public int computeEmpWage(CompanyEmpWage obj) {
 		
 		int hrs = 0;
 		int totalHrs = 0;
 		int totalDays = 0;
 		
-		for (; totalHrs <= max_hours && totalDays < working_days;) 
+		for (; totalHrs <= obj.max_hours && totalDays < obj.working_days;) 
 		    {
 			totalDays++;
 			int empcheck =(int)( Math.floor(Math.random() * 10) % 3);
@@ -38,14 +46,14 @@ public class EmpWage
 			System.out.println("Day: " + totalDays + " Employee Hours: " + hrs);
 			
 		}
-		int totalWage = totalHrs * wage_per_hour;
+		int totalWage = totalHrs * obj.wage_per_hour;
 			System.out.println("Total Employee Wage :"+totalWage);
 			return totalWage;
 	}
 	public static void main(String[] args) {
-		EmpWage obj1 = new EmpWage("DMart" , 20 , 2 , 10);
-		obj1.computeEmpWage();
-		EmpWage obj2 = new EmpWage("RelianceMart" , 10 , 4 , 20);
-		obj2.computeEmpWage();
+		EmpWage obj = new EmpWage();
+		obj.addCompanyWage("DMart", 20, 2, 10);
+		obj.addCompanyWage("Reliancemart",10 , 4, 20);
+		obj.computeEmpWage();
 	}
 }
