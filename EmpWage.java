@@ -7,14 +7,17 @@ public class EmpWage implements InterfaceEmpWage
 	
 	
 	public List<CompanyEmpWage> list;
+	public Map<String,CompanyEmpWage> map;
 	
 	public EmpWage()
 	{
-        list = new ArrayList<>();		
+        list = new ArrayList<>();
+        map = new HashMap<>(); 
 	}
 	public void addCompanyWage(String company, int wage_per_hour, int working_days, int max_hours) {
 		CompanyEmpWage obj = new CompanyEmpWage( company,  wage_per_hour,  working_days, max_hours);
 		list.add(obj);
+		map.put(company, obj);
 	}
 	public void computeEmpWage() {
 		for(int i = 0; i < list.size(); i++) {
@@ -22,6 +25,11 @@ public class EmpWage implements InterfaceEmpWage
 			obj.setTotalWage(this.computeEmpWage(obj));
 			System.out.println(obj);
 		}
+	}
+	@Override
+	public int getTotalWage(String company)
+	{
+		return map.get(company).totalWage;
 	}
 	public int computeEmpWage(CompanyEmpWage obj) {
 		
@@ -58,5 +66,6 @@ public class EmpWage implements InterfaceEmpWage
 		obj.addCompanyWage("DMart", 20, 2, 10);
 		obj.addCompanyWage("Reliancemart",10 , 4, 20);
 		obj.computeEmpWage();
+		System.out.println("Total Wage for DMart Company: " + obj.getTotalWage("DMart"));
 	}
 }
